@@ -3,7 +3,8 @@ void main(){
   addNumbers(10,20);
 }
 
- void addNumbers(int x,int y){
-   print(x+y);
+ void addNumbers(int a,int b){
+   print(a+b);
+   print("is sum")
  }
 
