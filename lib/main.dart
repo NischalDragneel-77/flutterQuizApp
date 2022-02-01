@@ -1,9 +1,18 @@
+class Person {
+  String name = "Nischal";
+  int age = 21;
+}
+
 void main() {
-  print("Hello World");
-  addNumbers(10, 20);
+  var p1 = Person();
+  var p2 = Person();
+  p2.name = "mike";
+  print("Hello World from ${p1.name}");
+  print("Hello World from ${p2.name}");
+  var x = addNumbers(p1.age, p2.age);
+  print(x);
 }
 
-void addNumbers(int x, int y) {
-  print("${x+y} Is sum of x and y #rekya");
+num addNumbers(num x, num y) {
+  return x + y;
 }
-
