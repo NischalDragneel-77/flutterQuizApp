@@ -32,7 +32,7 @@ class Answer extends StatelessWidget {
             EdgeInsets.all(20),
           ),
         ),
-        child: const Text('Answer1'),
+        child: Text(answerText),
         onPressed: selectHandler as void Function(),
       ),
     );
