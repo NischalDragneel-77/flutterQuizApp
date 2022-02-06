@@ -13,40 +13,54 @@ void main() => runApp(MyApp());
 class MyApp extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return _MyAppState();
   }
 }
 
 class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
+  var _totalScore = 0;
   final _questions = [
     {
       'questionText': 'What\'s your favorite color?',
-      'answers': ['Crimson', 'Blue', 'Grey', 'White'],
+      'answers': [
+        {'text': 'Black', 'score': 20},
+        {'text': 'Red', 'score': 5},
+        {'text': 'Blue', 'score': 10},
+        {'text': 'Grey', 'score': 15},
+      ],
     },
     {
       'questionText': 'What\'s your favorite animal?',
-      'answers': ['Rabbit', 'Snake', 'Elephant', 'Lion', 'Tiger'],
+      'answers': [
+        {'text': 'Dog', 'score': 5},
+        {'text': 'Cat', 'score': 20},
+        {'text': 'Lion', 'score': 10},
+        {'text': 'Tiger', 'score': 15},
+      ],
     },
     {
       'questionText': 'What\'s your favorite instructor?',
-      'answers': ['Sushil', 'Manoj', 'Gajendra', 'Rajesh'],
+      'answers': [
+        {'text': 'Shushil', 'score': 20},
+        {'text': 'Gajendra', 'score': 15},
+        {'text': 'Rajani', 'score': 5},
+        {'text': 'Rajesh', 'score': 10},
+      ],
     },
   ];
 
-  void _answerQuestion() {
+  void _answerQuestion(int score) {
+    _totalScore += score;
     setState(() {
       _questionIndex++;
     });
     print(_questionIndex);
     if (_questionIndex < _questions.length) {
-      // ignore: avoid_print
       print('we have more questions');
     } else {
       print('No more questions!');
     }
-    // ignore: avoid_print
   }
 
   @override
@@ -60,10 +74,10 @@ class _MyAppState extends State<MyApp> {
         ),
         body: _questionIndex < _questions.length
             ? Quiz(
-                answerQuestion: _answerQuestion as void Function(),
+                answerQuestion: _answerQuestion,
                 questions: _questions,
                 questionIndex: _questionIndex)
-            : Result(),
+            : Result(_totalScore),
       ),
     );
   }
